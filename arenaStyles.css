@@ -1,0 +1,124 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f2f2f2;
+  color: #333;
+}
+
+/* Header */
+header {
+  background-color: #26355D;
+  color: white;
+  text-align: center;
+  padding: 20px 10px;
+}
+
+header p {
+  font-size: 1em;
+  margin-top: 6px;
+  color: #FFDC60;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  font-size: 0.9em;
+  background: #26355D;
+  color: white;
+  padding: 15px 10px;
+  border-top: 3px solid #FFDC60;
+}
+
+/* Football Zone Layout */
+.football-zone {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 40px 20px;
+  justify-content: space-between;
+}
+
+.zone-card {
+  background: #fafbff;
+  border-radius: 10px;
+  padding: 20px;
+  flex: 1 1 30%;
+  min-width: 280px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.zone-card h2 {
+  color: #26355D;
+  margin-bottom: 16px;
+}
+
+/* Fixtures Styling */
+.zone-card.fixture {
+  border-top: 4px solid #1e90ff;
+}
+
+.match {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.teams {
+  font-weight: bold;
+  color: #26355D;
+  display: block;
+}
+
+.meta {
+  font-size: 0.9em;
+  color: #666;
+}
+
+
+/* Points Table */
+.zone-card.points {
+  border-top: 4px solid #ff9800;
+}
+
+.points-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95em;
+}
+
+.points-table th, .points-table td {
+  padding: 6px 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Player Stats */
+.zone-card.stats {
+  border-top: 4px solid #4caf50;
+}
+
+.stats {
+  list-style: none;
+  padding-left: 20px;
+  font-size: 0.95em;
+}
+
+.stats li {
+  margin-bottom: 12px;
+}
+
+/* Details Link */
+.details-link {
+  margin-top: auto;
+  font-weight: bold;
+  color: #1e90ff;
+  text-decoration: none;
+  padding-top: 10px;
+  display: inline-block;
+}
+
+.details-link:hover {
+  text-decoration: underline;
+  color: #26355D;
+}
