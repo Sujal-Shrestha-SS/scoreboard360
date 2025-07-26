@@ -12,16 +12,28 @@
       background: #f4f6fa;
       color: #333;
     }
-    .dashboard { display: flex; min-height: 100vh; }
+    .dashboard { 
+      display: flex; 
+      min-height: 100vh; 
+    }
     .sidebar {
       width: 240px;
       background: #26355D;
       color: white;
       padding: 20px;
     }
-    .sidebar h2 { font-size: 1.3em; margin-bottom: 20px; color: #FFDC60; }
-    .sidebar ul { list-style: none; padding: 0; }
-    .sidebar li { margin-bottom: 15px; }
+    .sidebar h2 { 
+      font-size: 1.3em; 
+      margin-bottom: 20px; 
+      color: #FFDC60; 
+    }
+    .sidebar ul { 
+      list-style: none; 
+      padding: 0; 
+    }
+    .sidebar li { 
+      margin-bottom: 15px; 
+    }
     
     .sidebar a {
       color: white;
@@ -67,13 +79,7 @@
       min-width: 140px;
       text-align: center;
     }
-    .meta {
-      font-size: 0.9em;
-      color: #666;
-      text-align: center;
-      margin-bottom: 8px;
-      display: block;
-    }
+    
     .save-btn {
       background-color: #1e90ff;
       color: white;
@@ -85,8 +91,20 @@
       display: block;
       margin: 0 auto;
     }
-    .save-btn:hover {
+    .save-btn:hover , .update-btn:hover {
       background-color: #005bb5;
+    }
+
+    .update-btn {
+      background-color: #1e90ff;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      
+      
     }
     .details-link {
       display: inline-block;
@@ -110,7 +128,7 @@
         <ul>
           <li><a href="admin_fixture.html">Add Fixtures</a></li>
           <li><a href="admin_view_fixture.php">View Fixtures</a></li>
-          <li><a href="admin_update_results.php">Update Results</a></li>
+          <li><a href="admin_insert_results.php">Insert Results</a></li>
           <li><a href="admin_view_results.php">View Results</a></li>
           <li><a href="#">Manage Player Stats</a></li>
           <li><a href="../index.html">Back to Home</a></li>
@@ -137,15 +155,16 @@
       $away = htmlspecialchars($row['away_team']);
 
       echo "
-        <form action='save_result.php' method='POST' class='match'>
+        <form action='update_result.php' method='POST' class='match'>
           <div class='score-entry'>
             <input type='hidden' name='fixture_id' value='$id'>
             <input type='number' name='home_score' placeholder='Home' class='score-input left' required />
             <span class='teams'>{$home} vs {$away}</span>
             <input type='number' name='away_score' placeholder='Away' class='score-input right' required />
           </div>
-          <span class='meta'>Match details pending</span>
-          <button type='submit' class='save-btn'>Save</button>
+          
+          <button type='submit' class='save-btn'>Update</button>
+          
         </form>
       ";
     }

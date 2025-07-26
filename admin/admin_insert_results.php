@@ -91,21 +91,10 @@
       display: block;
       margin: 0 auto;
     }
-    .save-btn:hover , .update-btn:hover {
+    .save-btn:hover {
       background-color: #005bb5;
     }
 
-    .update-btn {
-      background-color: #1e90ff;
-      color: white;
-      border: none;
-      padding: 6px 12px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: bold;
-      
-      
-    }
     .details-link {
       display: inline-block;
       margin-top: 10px;
@@ -128,7 +117,7 @@
         <ul>
           <li><a href="admin_fixture.html">Add Fixtures</a></li>
           <li><a href="admin_view_fixture.php">View Fixtures</a></li>
-          <li><a href="admin_update_results.php">Update Results</a></li>
+          <li><a href="admin_insert_results.php">Insert Results</a></li>
           <li><a href="admin_view_results.php">View Results</a></li>
           <li><a href="#">Manage Player Stats</a></li>
           <li><a href="../index.html">Back to Home</a></li>
@@ -164,7 +153,7 @@
           </div>
           
           <button type='submit' class='save-btn'>Save</button>
-          <button type='submit' class='update-btn'>Update</button>
+          
         </form>
       ";
     }

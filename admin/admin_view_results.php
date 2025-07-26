@@ -36,6 +36,22 @@
     tr:hover {
       background-color: #f1f1f1;
     }
+
+    .update-btn {
+    background-color: #1e90ff;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease;
+  }
+
+  .update-btn:hover {
+    background-color: #005bb5;
+  }
+
     
 
  
@@ -50,7 +66,7 @@
         <ul>
           <li><a href="admin_fixture.html">Add Fixtures</a></li>
           <li><a href="admin_view_fixture.php">View Fixtures</a></li>
-          <li><a href="admin_update_result.php">Update Results</a></li>
+          <li><a href="admin_insert_results.php">Insert Results</a></li>
           <li><a href="admin_view_results.php">View Results</a></li>
           <li><a href="#">Manage Player Stats</a></li>
           <li><a href="index.html">Back to Home</a></li>
@@ -102,6 +118,15 @@
       $conn->close();
   
       ?>
+      </table>
+
+      <!-- Update results -->
+
+      <br/>
+      <div style="text-align: center; margin-top: 20px;">
+        <a href="admin_update_results.php" class="update-btn">Update Results</a>
+      </div>
+
 
       
     </div>

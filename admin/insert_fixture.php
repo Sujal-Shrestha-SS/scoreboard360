@@ -6,7 +6,7 @@ $away = $_POST['away_team'];
 
 // Connect to database
 $conn = mysqli_connect("localhost", "root", "", "scoreboard360");
-$result = mysqli_query($conn, $sql);
+
 // Check connection
 if (!$conn) {
     die("Connection failed: ");
@@ -14,6 +14,8 @@ if (!$conn) {
 
 // Insert data into fixtures table
 $sql = "INSERT INTO add_fixture (fixture_id, home_team, away_team) VALUES ('$matchNo', '$home', '$away')";
+$result = mysqli_query($conn, $sql);
+
 if ($result) {
     echo "Fixture added successfully!";
 }
