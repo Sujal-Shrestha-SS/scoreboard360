@@ -1,0 +1,31 @@
+Returns status : Win , Draw or Loss
+based on home_score and away_score
+
+
+SELECT 
+  af.fixture_id,
+  af.home_team,
+  af.away_team,
+  r.home_score,
+  r.away_score,
+  CASE
+    WHEN r.home_score > r.away_score THEN af.home_team
+    WHEN r.home_score < r.away_score THEN af.away_team
+    ELSE 'Draw'
+  END AS status
+FROM add_fixture af
+JOIN results r ON af.fixture_id = r.fixture_id;
+
+
+Update results table
+
+ALTER TABLE results ADD COLUMN status VARCHAR(50);
+
+UPDATE results r
+JOIN add_fixture af ON r.fixture_id = af.fixture_id
+SET r.status = 
+  CASE
+    WHEN r.home_score > r.away_score THEN af.home_team
+    WHEN r.home_score < r.away_score THEN af.away_team
+    ELSE 'Draw'
+  END;

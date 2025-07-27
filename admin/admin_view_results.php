@@ -87,11 +87,7 @@
     </tr>
 
     <?php
-      $conn = new mysqli("localhost", "root", "", "scoreboard360");
-
-      if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-      }
+      include 'db_connect.php';
 
       $sql = "SELECT f.home_team, f.away_team, r.home_score, r.away_score 
               FROM results r 

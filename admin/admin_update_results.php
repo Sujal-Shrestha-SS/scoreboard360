@@ -139,11 +139,7 @@
       <h2>📅 Fixtures</h2>
 
       <?php
-  $conn = mysqli_connect("localhost", "root", "", "scoreboard360");
-
-  if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-  }
+  include 'db_connect.php';
 
   $sql = "SELECT fixture_id, home_team, away_team FROM add_fixture";
   $result = mysqli_query($conn, $sql);

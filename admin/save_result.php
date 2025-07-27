@@ -3,10 +3,7 @@ $fixture_id = $_POST['fixture_id'];
 $home_score = $_POST['home_score'];
 $away_score = $_POST['away_score'];
 
-$conn = mysqli_connect("localhost", "root", "", "scoreboard360");
-if (!$conn) {
-  die("Connection failed: " . mysqli_connect_error());
-}
+include 'db_connect.php';
 
 // 1️⃣ Save match result
 $sql = "INSERT INTO results (fixture_id, home_score, away_score) VALUES ('$fixture_id', '$home_score', '$away_score')";

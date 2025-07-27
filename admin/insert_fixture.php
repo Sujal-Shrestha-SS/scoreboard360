@@ -5,7 +5,7 @@ $home = $_POST['home_team'];
 $away = $_POST['away_team'];
 
 // Connect to database
-$conn = mysqli_connect("localhost", "root", "", "scoreboard360");
+include 'db_connect.php';
 
 // Check connection
 if (!$conn) {

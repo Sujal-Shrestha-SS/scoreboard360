@@ -1,15 +1,13 @@
 <?php
 
 
-$conn = mysqli_connect("localhost", "root", "", "scoreboard360");
+include 'db_connect.php';
 
 $fixture_id = $_POST['fixture_id'];
 $home_score = $_POST['home_score'];
 $away_score = $_POST['away_score'];
 
-if (!$conn) {
-  die("Connection failed: " . mysqli_connect_error());
-}
+
 
 // 1️⃣ Update new score
 $sql = "UPDATE results SET home_score = $home_score , away_score = $away_score WHERE fixture_id = $fixture_id";
