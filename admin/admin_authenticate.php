@@ -8,7 +8,13 @@ if($username == 'admin' && $pw == 'admin123'){
 }
 
 else{
-    echo "Invalid login credentials";
+    echo "<script>
+    alert('Invalid Login Credentials');
+    window.location.href = 'admin_login.html';
+    </script>";
+
+
+    
 }
 
 ?>

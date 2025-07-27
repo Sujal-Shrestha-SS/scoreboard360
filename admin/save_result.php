@@ -5,12 +5,12 @@ $away_score = $_POST['away_score'];
 
 include 'db_connect.php';
 
-// 1️⃣ Save match result
+//Save match result
 $sql = "INSERT INTO results (fixture_id, home_score, away_score) VALUES ('$fixture_id', '$home_score', '$away_score')";
 if (mysqli_query($conn, $sql)) {
-  echo "✅ Score saved!<br>";
+  echo "Score saved!<br>";
 
-  // 2️⃣ Update match status
+  //Update match status
   $statusSql = "
     UPDATE results r
     JOIN add_fixture af ON r.fixture_id = af.fixture_id
@@ -24,7 +24,7 @@ if (mysqli_query($conn, $sql)) {
   ";
   mysqli_query($conn, $statusSql);
 
-  // 3️⃣ Insert missing team rows in points table
+  //Insert missing team rows in points table
   $getTeams = mysqli_query($conn, "
     SELECT home_team, away_team FROM add_fixture WHERE fixture_id = '$fixture_id'
   ");
@@ -40,7 +40,7 @@ if (mysqli_query($conn, $sql)) {
     ");
   }
 
-  // 4️⃣ Update WIN count based on status matches
+  //Update WIN count based on status matches
   mysqli_query($conn, "
     UPDATE points 
     SET win = (
@@ -48,7 +48,7 @@ if (mysqli_query($conn, $sql)) {
     )
   ");
 
-  // 5️⃣ Update DRAW count using fixture JOIN for accuracy
+  //Update DRAW count using fixture JOIN for accuracy
   mysqli_query($conn, "
     UPDATE points 
     SET draw = (
@@ -60,7 +60,7 @@ if (mysqli_query($conn, $sql)) {
     )
   ");
 
-  // 6️⃣ Update LOSS count using total matches - win - draw
+  //Update LOSS count using total matches - win - draw
   mysqli_query($conn, "
     UPDATE points 
     SET loss = (
@@ -71,12 +71,12 @@ if (mysqli_query($conn, $sql)) {
     ) - win - draw
   ");
 
-  // 7️⃣ Update POINTS based on win (3 pts) and draw (1 pt)
+  //Update POINTS based on win (3 pts) and draw (1 pt)
   mysqli_query($conn, "
     UPDATE points SET points = win * 3 + draw * 1
   ");
 
-  // 8️⃣ Update matches played count
+  //Update matches played count
 mysqli_query($conn, "
   UPDATE points 
   SET played = (
@@ -88,9 +88,9 @@ mysqli_query($conn, "
 ");
 
 
-  echo "🏁 Match status and team stats updated!";
+  echo "Match status and team stats updated!";
 } else {
-  echo "❌ Error saving score: " . mysqli_error($conn);
+  echo "Error saving score: " . mysqli_error($conn);
 }
 
 mysqli_close($conn);

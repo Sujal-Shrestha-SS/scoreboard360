@@ -27,33 +27,17 @@
       font-weight: bold;
     }
 
-    .meta {
-      display: block;
-      font-size: 0.9em;
-      color: gray;
-      margin-top: 5px;
-    }
+    
 
    
   </style>
 </head>
 <body>
-  <div class="dashboard">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-      <h2>Admin Panel</h2>
-      <nav>
-        <ul>
-          <li><a href="admin_fixture.html">Add Fixtures</a></li>
-          <li><a href="admin_view_fixture.php">View Fixtures</a></li>
-          <li><a href="admin_insert_results.php">Insert Results</a></li>
-          <li><a href="admin_view_results.php">View Results</a></li>
-          <li><a href="#">Manage Player Stats</a></li>
-          <li><a href="../index.html">Back to Home</a></li>          
+  <?php
 
-        </ul>
-      </nav>
-    </aside>
+  include 'admin_sidebar.php';
+
+  ?>
 
     <!-- View Fixture -->
     <div class="zone-card fixture">
@@ -74,7 +58,6 @@
             $away = $row['away_team'];
             echo "<div class='match'>
                     <span class='teams'>{$home} vs {$away}</span>
-                    <span class='meta'>Match details pending</span>
                   </div>";
           }
         } else {

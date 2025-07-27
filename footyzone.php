@@ -55,8 +55,35 @@
   color: #1e90ff;
 }
 
+/* stats */
 
-
+h2 {
+      color: #26355D;
+      margin-top: 40px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      margin-top: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+    th {
+      background-color: #26355D;
+      color: white;
+    }
+    tr:hover {
+      background-color: #f9f9f9;
+    }
+    .highlight {
+      font-weight: bold;
+      color: #1e90ff;
+    }
 
   </style>
   
@@ -69,7 +96,7 @@
 
   <main class="football-zone">
     <div class="zone-card fixture">
-      <h2>Results</h2>
+      <h2>🏁 Results</h2>
     <?php
       include 'admin/db_connect.php';
       $sql = "SELECT home_team, away_team FROM add_fixture";
@@ -121,10 +148,10 @@
         include 'admin/db_connect.php';
 
         $sql = "SELECT team, played, win, draw, loss, points FROM points ORDER BY points DESC LIMIT 2";
-        $result = $conn->query($sql);
+        $result = mysqli_query($conn, $sql);
 
-        if ($result->num_rows > 0) {
-          while ($row = $result->fetch_assoc()) {
+        if (mysqli_num_rows($result) > 0) {
+          while ($row = mysqli_fetch_assoc($result)) {
             echo "<tr>
                     <td>" . htmlspecialchars($row['team']) . "</td>
                     <td>{$row['played']}</td>
@@ -138,7 +165,7 @@
           echo "<tr><td colspan='6'>No team stats available.</td></tr>";
         }
 
-        $conn->close();
+        mysqli_close($conn);
       ?>
     </tbody>
   </table>
@@ -147,13 +174,51 @@
 
     <div class="zone-card stats">
       <h2>🎯 Player Stats</h2>
-      <ul class="stats">
-        <li><strong>Top Scorer:</strong> S. Shrestha - 5 Goals</li>
-        <li><strong>Most Assists:</strong> I. Neupane - 3 Assists</li>
-        <li><strong>Clean Sheets:</strong> A. Ghimire - 2 Matches</li>
-      </ul>
-      <a href="stats.html" class="details-link">Explore player stats →</a>
-    </div>
+
+      <table class="points-table">
+    <thead>
+      <tr>
+        <th>Player</th>
+        <th>Goals</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <?php
+        include 'admin/db_connect.php';
+
+        $sql = "SELECT player_name, COUNT(*) AS goals
+        FROM goal_details
+        GROUP BY player_name
+        ORDER BY goals DESC
+        LIMIT 3";
+
+        $scorers = mysqli_query($conn, $sql);
+
+        
+        if (mysqli_num_rows($scorers) > 0) {
+          while($row = mysqli_fetch_assoc($scorers)) {
+            echo "<tr>
+                    <td class='highlight'>" . htmlspecialchars($row['player_name']) . "</td>
+                    <td>" . $row['goals'] . "</td>
+                  </tr>";
+          }
+        } else {
+          echo "<tr><td colspan='2'>Leaderboard unavailable</td></tr>";
+        }
+
+        mysqli_close($conn);
+
+      
+        ?>
+      <table>
+
+  </table>
+          <a href="footy_stats.php" class="details-link">Full leaderboard →</a>
+
+  </div>
+
+  
 
      <div class="back-home">
   <a href="index.html">← Back to ScoreBoard360 Home</a>

@@ -5,50 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>View Fixtures – Admin Panel</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6fa;
-      color: #333;
-    }
-    .dashboard { 
-      display: flex; 
-      min-height: 100vh; 
-    }
-    .sidebar {
-      width: 240px;
-      background: #26355D;
-      color: white;
-      padding: 20px;
-    }
-    .sidebar h2 { 
-      font-size: 1.3em; 
-      margin-bottom: 20px; 
-      color: #FFDC60; 
-    }
-    .sidebar ul { 
-      list-style: none; 
-      padding: 0; 
-    }
-    .sidebar li { 
-      margin-bottom: 15px; 
-    }
-    
-    .sidebar a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .sidebar a:hover {
-      text-decoration: underline;
-      color: #FFDC60;
-    }
+  <link rel="stylesheet" href="../arenaStyles.css">
+  <link rel="stylesheet" href="../sidebar.css">
 
+  <style>
+   
     .zone-card.fixture { 
       flex: 1; 
       padding: 30px; 
     }
+
+    .fixture {
+      margin: 20px;
+      flex: 1;
+    }
+
+      
 
     .match {
       background: white;
@@ -121,22 +93,12 @@
 </head>
 
 <body>
-  <div class="dashboard">
-    <aside class="sidebar">
-      <h2>Admin Panel</h2>
-      <nav>
-        <ul>
-          <li><a href="admin_fixture.html">Add Fixtures</a></li>
-          <li><a href="admin_view_fixture.php">View Fixtures</a></li>
-          <li><a href="admin_insert_results.php">Insert Results</a></li>
-          <li><a href="admin_view_results.php">View Results</a></li>
-          <li><a href="#">Manage Player Stats</a></li>
-          <li><a href="../index.html">Back to Home</a></li>
-      </nav>
-    </aside>
+  <?php
 
+  include 'admin_sidebar.php';
+?>
     <div class="zone-card fixture">
-      <h2>📅 Fixtures</h2>
+      <h2>Fixtures</h2>
 
       <?php
   include 'db_connect.php';
@@ -172,7 +134,6 @@
 ?>
 
 
-      <a href="fixtures.html" class="details-link">View all fixtures →</a>
     </div>
   </div>
 </body>

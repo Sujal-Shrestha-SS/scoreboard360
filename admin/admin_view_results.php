@@ -58,21 +58,11 @@
   </style>
 </head>
 <body>
-  <div class="dashboard">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-      <h2>Admin Panel</h2>
-      <nav>
-        <ul>
-          <li><a href="admin_fixture.html">Add Fixtures</a></li>
-          <li><a href="admin_view_fixture.php">View Fixtures</a></li>
-          <li><a href="admin_insert_results.php">Insert Results</a></li>
-          <li><a href="admin_view_results.php">View Results</a></li>
-          <li><a href="#">Manage Player Stats</a></li>
-          <li><a href="index.html">Back to Home</a></li>
-        </ul>
-      </nav>
-    </aside>
+ <?php
+
+ include 'admin_sidebar.php';
+
+ ?>
 
     <!-- Fixture Viewer -->
     <div class="zone-card fixture">

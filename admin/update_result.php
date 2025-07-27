@@ -9,7 +9,7 @@ $away_score = $_POST['away_score'];
 
 
 
-// 1️⃣ Update new score
+//Update new score
 $sql = "UPDATE results SET home_score = $home_score , away_score = $away_score WHERE fixture_id = $fixture_id";
 $result = mysqli_query($conn, $sql);
 
