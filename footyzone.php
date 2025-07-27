@@ -26,6 +26,36 @@
   color: #1e90ff;
 }
 
+.points-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border: 1px solid #ccc;
+}
+
+.points-table th, 
+.points-table td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+.points-table thead {
+  background-color: #26355D;
+  color: white;
+  font-weight: bold;
+}
+
+.points-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.points-table td strong {
+  color: #1e90ff;
+}
+
+
 
 
   </style>
@@ -41,7 +71,7 @@
     <div class="zone-card fixture">
       <h2>Results</h2>
     <?php
-      $conn = mysqli_connect("localhost", "root", "", "scoreboard360");
+      include 'admin/db_connect.php';
       $sql = "SELECT home_team, away_team FROM add_fixture";
       $result = mysqli_query($conn, $sql);
 
@@ -76,39 +106,43 @@
     <div class="zone-card points">
       <h2>📊 Points Table</h2>
       <table class="points-table">
-        <thead>
-          <tr>
-            <th>Team</th>
-            <th>P</th>
-            <th>W</th>
-            <th>L</th>
-            <th>Pts</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>CSE</td>
-            <td>3</td>
-            <td>2</td>
-            <td>1</td>
-            <td>6</td>
-        </tr>
-          <tr>
-            <td>ECE</td>
-            <td>3</td>
-            <td>2</td>
-            <td>1</td>
-            <td>6</td>
-        </tr>
-          <tr>
-            <td>Civil</td>
-            <td>3</td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-        </tr>
-        </tbody>
-      </table>
-      <a href="points.html" class="details-link">Full standings →</a>
+    <thead>
+      <tr>
+        <th>Team</th>
+        <th>Played</th>
+        <th>Wins</th>
+        <th>Draws</th>
+        <th>Losses</th>
+        <th>Points</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php
+        include 'admin/db_connect.php';
+
+        $sql = "SELECT team, played, win, draw, loss, points FROM points ORDER BY points DESC LIMIT 2";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+          while ($row = $result->fetch_assoc()) {
+            echo "<tr>
+                    <td>" . htmlspecialchars($row['team']) . "</td>
+                    <td>{$row['played']}</td>
+                    <td>{$row['win']}</td>
+                    <td>{$row['draw']}</td>
+                    <td>{$row['loss']}</td>
+                    <td><strong>{$row['points']}</strong></td>
+                  </tr>";
+          }
+        } else {
+          echo "<tr><td colspan='6'>No team stats available.</td></tr>";
+        }
+
+        $conn->close();
+      ?>
+    </tbody>
+  </table>
+      <a href="footy_points.php" class="details-link">Full standings →</a>
     </div>
 
     <div class="zone-card stats">
