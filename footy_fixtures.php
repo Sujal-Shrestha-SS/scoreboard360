@@ -73,7 +73,7 @@
     </tr>
 
     <?php
-      $conn = new mysqli("localhost", "root", "", "scoreboard360");
+      include 'admin/db_connect.php';
 
       if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
