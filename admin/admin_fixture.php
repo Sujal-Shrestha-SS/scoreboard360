@@ -1,3 +1,9 @@
+<?php
+
+include 'admin_sessionCheck.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,14 +40,16 @@
       <h2>Admin Panel</h2>
       <nav>
         <ul>
-          <li><a href="admin_fixture.html">Add Fixtures</a></li>
+          <li><a href="admin_fixture.php">Add Fixtures</a></li>
           <li><a href="admin_view_fixture.php">View Fixtures</a></li>
           <li><a href="admin_insert_results.php">Insert Results</a></li>
           <li><a href="admin_view_results.php">View Results</a></li>
           <li><a href="admin_manage_stats.php">Manage Player Stats</a></li>
           <li><a href="admin_view_stats.php">View Player Stats</a></li>
+          <li><a href="admin_view_points.php">View Points Table</a></li>
 
           <li><a href="../index.html">Back to Home</a></li>
+          <li><a href="admin_logout.php">Logout</a></li>
         </ul>
       </nav>
     </aside>
@@ -63,7 +71,7 @@
   <label for="away">Away Team: </label>
   <input type="text" id="away" name="away_team" placeholder="Enter away team" required><br><br>
 
-  <button type="submit">Enter</button>
+  <button type="submit" onclick = "return alert('Fixture inserted');">Enter</button>
 </form>
 
 

@@ -1,12 +1,24 @@
-<!-- points_view.php -->
+<?php
+
+include 'admin_sessionCheck.php';
+include 'admin_sidebar.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Full Points Table</title>
-  <link rel="stylesheet" href="arenaStyles.css">
+  <link rel="stylesheet" href="../arenaStyles.css">
+  <link rel="stylesheet" href="../sidebar.css">
   <style>
+
+    .zone-card.points { 
+      padding: 30px;
+     }
+    
     .points-table {
       width: 100%;
       border-collapse: collapse;
@@ -88,18 +100,7 @@
       
     </table>
 
-    <form action="admin_update_points.php" method="POST" style="margin-top: 20px; text-align:center;">
-  <button type="submit" style="
-    background-color: #1e90ff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  ">
-    🔄 Recalculate Points Table
-  </button>
-</form>
+
 
   </div>
 </body>

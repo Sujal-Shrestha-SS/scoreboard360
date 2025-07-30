@@ -1,20 +1,14 @@
 <?php
+session_start();
 
 $username = $_POST['username'];
-$pw = $_POST['password'];
+$password = $_POST['password'];
 
-if($username == 'admin' && $pw == 'admin123'){
-   header("Location: admin_fixture.html");
+if ($username === 'admin' && $password === 'admin123') {
+  $_SESSION['admin_logged_in'] = true;
+  header("Location: admin_fixture.php");
+  exit();
+} else {
+  echo "<script>alert('Invalid credentials'); window.location.href='admin_login.html';</script>";
 }
-
-else{
-    echo "<script>
-    alert('Invalid Login Credentials');
-    window.location.href = 'admin_login.html';
-    </script>";
-
-
-    
-}
-
 ?>

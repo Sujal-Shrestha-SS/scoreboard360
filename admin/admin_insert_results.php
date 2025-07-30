@@ -1,3 +1,11 @@
+<?php
+
+include 'admin_sessionCheck.php';
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -118,7 +126,7 @@ include 'admin_sidebar.php';
             <input type='number' name='away_score' placeholder='Away' class='score-input right' required />
           </div>
           
-          <button type='submit' class='save-btn'>Save</button>
+          <button type='submit' class='save-btn' onclick = 'return alert('Results inserted');'>Save</button>
           
         </form>
       ";

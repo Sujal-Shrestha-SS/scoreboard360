@@ -88,7 +88,8 @@ mysqli_query($conn, "
 ");
 
 
-  echo "Match status and team stats updated!";
+  // echo "Match status and team stats updated!";
+  header("Location: admin_insert_results.php");
 } else {
   echo "Error saving score: " . mysqli_error($conn);
 }

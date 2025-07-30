@@ -19,8 +19,13 @@ main {
   
 }
 
+
+
 .overview{
     display: flex;
+    justify-content: center; 
+    align-items: center;     
+    height: 100%;
     
 }
 
@@ -34,46 +39,36 @@ main {
   border-radius: 8px;
   height: 300px;
   width: 40%;
-  margin-right: 100px;
   font-family: 'Lucida Sans';
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   filter: grayscale(50%);
 }
 
 
-.football h2 , .cricket h2{
+.football h2  {
     text-align: center;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 50px;
+    margin-top: -10px;
+    -webkit-text-stroke: 1px #f4d109;
+
+    
 }
 
-.cricket{
-  background-image: url('cricket.png'); 
-  background-size: cover;     
-  background-position: center;
-  background-repeat: no-repeat;
-  color: white;              
-  padding: 15px;
-  border-radius: 8px;
-  height: 300px;
-  width: 40%;
-  margin-left: 100px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  filter: grayscale(50%);
 
 
-}
 
-.football a, .cricket a{
+.football a{
     text-decoration: none;
     color: rgb(255, 249, 249);
-    font-family: Cambria;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: bold;
+    font-size: 15px;
     font-style: italic;
     margin-left: 65%;
+    margin-top: 40%;
+    /* -webkit-text-stroke: 1px #2009f4; */
     
     
 }

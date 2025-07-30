@@ -1,3 +1,9 @@
+<?php
+
+include 'admin_sessionCheck.php';
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

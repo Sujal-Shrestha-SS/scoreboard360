@@ -17,7 +17,12 @@ $sql = "INSERT INTO add_fixture (fixture_id, home_team, away_team) VALUES ('$mat
 $result = mysqli_query($conn, $sql);
 
 if ($result) {
-    echo "Fixture added successfully!";
+    // echo "Fixture added successfully!";
+    // echo "<script>alert('Fixture inserted');</script>";
+    header("Location: admin_fixture.php");
+}
+else{
+    echo "Error";
 }
 
 mysqli_close($conn);

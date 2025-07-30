@@ -1,3 +1,8 @@
+<?php
+include 'admin_sessionCheck.php';
+include 'db_connect.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,9 +12,8 @@
 
   <link rel="stylesheet" href="../arenaStyles.css">
   <link rel="stylesheet" href="../sidebar.css">
-  <style>
-    
 
+  <style>
     .fixture {
       margin: 20px;
       flex: 1;
@@ -25,50 +29,64 @@
 
     .teams {
       font-weight: bold;
+      font-size: 18px;
     }
 
-    
+    button {
+      background-color: #e63946;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    }
 
-   
+    button:hover {
+      background-color: #d62828;
+    }
+
+    button:active {
+      background-color: #b51717;
+      transform: scale(0.98);
+    }
   </style>
 </head>
 <body>
-  <?php
 
-  include 'admin_sidebar.php';
+  <?php include 'admin_sidebar.php'; ?>
 
-  ?>
+  <div class="zone-card fixture">
+    <h2>🗓️ Fixtures</h2>
 
-    <!-- View Fixture -->
-    <div class="zone-card fixture">
-      <h2>Fixtures</h2>
+    <?php
+    $sql = "SELECT fixture_id, home_team, away_team FROM add_fixture";
+    $result = mysqli_query($conn, $sql);
 
-      <?php
-        include 'db_connect.php';
-        $sql = "SELECT home_team, away_team FROM add_fixture";
+    if (!$result) {
+      echo "<p>Error fetching fixtures: " . mysqli_error($conn) . "</p>";
+    } elseif (mysqli_num_rows($result) > 0) {
+      while ($row = mysqli_fetch_assoc($result)) {
+        $fixture_id = $row['fixture_id'];
+        $home = htmlspecialchars($row['home_team']);
+        $away = htmlspecialchars($row['away_team']);
 
-        $result = mysqli_query($conn, $sql);
-        if (!$result) {
-          die("Connection failed: ");
-        }
+        echo "<div class='match'>
+                <span class='teams'>{$home} vs {$away}</span>
+                <form action='delete_fixture.php' method='post' style='margin-top: 10px;'>
+                  <input type='hidden' name='fixture_id' value='{$fixture_id}'>
+                  <button type='submit'>Delete</button>
+                </form>
+              </div>";
+      }
+    } else {
+      echo "<p>No fixtures scheduled yet.</p>";
+    }
 
-        if (mysqli_num_rows($result) > 0) {
-          while ($row = mysqli_fetch_assoc($result)) {
-            $home = $row['home_team'];
-            $away = $row['away_team'];
-            echo "<div class='match'>
-                    <span class='teams'>{$home} vs {$away}</span>
-                  </div>";
-          }
-        } else {
-          echo "<p>No fixtures scheduled yet.</p>";
-        }
-
-  mysqli_close($conn);
-?>
-
-
-    </div>
+    mysqli_close($conn);
+    ?>
   </div>
 </body>
 </html>

@@ -26,6 +26,9 @@ foreach ($_POST['player_name'] as $i => $player) {
 
 // Optional: Return success message or redirect
 echo ($action === 'update') 
-  ? "Goals updated for fixture $fixture_id." 
-  : "Goals saved for fixture $fixture_id.";
+  // ? "Goals updated for fixture $fixture_id." 
+  // : "Goals saved for fixture $fixture_id.";
+
+ ? header("Location: admin_manage_stats.php")
+ : header("Location: admin_manage_stats.php");
 ?>

@@ -1,5 +1,6 @@
 <?php 
 include 'db_connect.php';
+include 'admin_sessionCheck.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,8 +20,12 @@ include 'db_connect.php';
       color: #333;
     }
 
-    .zone-card.fixture { padding: 30px; }
-    .fixture { margin: 20px; }
+    .zone-card.fixture { 
+      padding: 30px;
+     }
+    .fixture {
+       margin: 20px; 
+      }
     h2 { color: #26355D; }
 
     .match-box {

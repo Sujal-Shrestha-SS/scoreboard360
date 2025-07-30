@@ -1,5 +1,6 @@
 <?php
 include('db_connect.php');
+include 'admin_sessionCheck.php';
 
 // Top Goal Scorers
 $topScorers = mysqli_query($conn, "

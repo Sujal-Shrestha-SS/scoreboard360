@@ -30,7 +30,8 @@ if($result){
   ";
 
   if (mysqli_query($conn, $statusSql)) {
-    echo "Match status updated successfully!";
+    // echo "Match status updated successfully!";
+    header("Location: admin_update_results.php");
   } else {
     echo "Error updating status: " . mysqli_error($conn);
   }
